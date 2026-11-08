@@ -274,7 +274,8 @@
       var d = r.dados;
       L.push("Ingressos gratuitos: " + d.gratuitos + " | Pagantes: " + d.pagantes);
       L.push("Valor total: " + brl.format(d.valor));
-      if (d.valor > 0) L.push("Vou enviar o comprovante do PIX por aqui.");
+      if (d.conferir) L.push("(Atenção: nome parecido com mais de um convidado. Favor conferir se tenho cortesia. Meu nome completo: " + payload.nome + ")");
+      else if (d.valor > 0) L.push("Vou enviar o comprovante do PIX por aqui.");
     } else {
       L.push("(Atenção: não foi possível registrar na planilha. Favor conferir a lista e o valor.)");
     }
@@ -300,6 +301,9 @@
     if (!r.registrado) {
       wrap.appendChild(el("p", { "class": "res__note" },
         "Não conseguimos registrar sua confirmação automaticamente. Sem problemas: faça o PIX (se for pagar ingresso) e envie a mensagem pelo WhatsApp que confirmamos por lá."));
+    } else if (d.conferir) {
+      wrap.appendChild(el("p", { "class": "res__note" },
+        "Não conseguimos confirmar sua cortesia automaticamente, pois há nomes parecidos na lista. Envie a mensagem pelo WhatsApp e confirmamos por lá (informe seu nome completo). Se o ingresso for cortesia, você não precisará pagar."));
     } else if (d.gratuitos > 0 && d.pagantes === 0) {
       wrap.appendChild(el("p", null, "Seu ingresso é cortesia. Enviar a mensagem pelo WhatsApp conclui a confirmação."));
     } else {

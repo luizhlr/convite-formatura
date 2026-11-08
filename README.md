@@ -33,6 +33,10 @@ Regras da confirmação: o convidado da lista tem ingresso gratuito; acompanhant
 3. Confira, no começo do script, `PRECO: 350` e `MAX_PESSOAS: 6` (devem bater com o `config.js`).
 4. Selecione a função **configurarPlanilha** no topo e clique em **Executar**. Autorize quando o Google pedir. Isso cria as abas **Convidados** e **Confirmações**, com cabeçalho e listas suspensas.
 5. Na aba **Convidados**, a partir da linha 2, digite na coluna A o nome completo de cada convidado com ingresso gratuito.
+   - O sistema aceita nome parcial: quem digitar "Luiz Henrique" é reconhecido como "Luiz Henrique Lopes Rodrigues", desde que combine com um único convidado. Regras: pelo menos 2 palavras; o primeiro nome precisa ser igual; as demais palavras seguem a mesma ordem; "de/da/do/dos/das/e", acentos e maiúsculas são ignorados; uma letra de diferença nos sobrenomes (Souza/Sousa) é tolerada.
+   - Se o nome combinar com mais de um convidado (ex.: "Ana Paula" com "Ana Paula Souza" e "Ana Paula Lima"), a cortesia NÃO é concedida automaticamente. A linha fica com o aviso "CONFERIR CORTESIA" em Observações e o convidado é orientado a falar pelo WhatsApp.
+   - Sempre que a cortesia vier de nome parcial, a coluna Observações registra o que foi digitado e com qual nome da lista casou, para você conferir.
+   - Dica: quanto mais completo o nome na lista, menos chance de confusão.
 6. Clique em **Implantar → Nova implantação**. Em tipo, escolha **App da Web**. Configure *Executar como*: **Eu**, e *Quem pode acessar*: **Qualquer pessoa**.
 7. Copie a URL que termina em `/exec` e cole em `appsScriptUrl` no `js/config.js` (no GitHub: abra o arquivo, clique no lápis, edite e faça o commit).
 8. Abra a URL `/exec` no navegador. Deve aparecer `{"ok":true,"status":"online"}`.

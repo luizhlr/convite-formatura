@@ -3,7 +3,8 @@
  *
  * O que faz:
  *  - Recebe a confirmação enviada pelo site (POST em JSON).
- *  - Confere se o responsável está na aba "Convidados" (ingresso gratuito).
+ *  - Confere se o responsável está na aba "Convidados" (ingresso gratuito). Aceita nome parcial
+ *    (ex.: "Luiz Henrique" para "Luiz Henrique Lopes Rodrigues") quando só um convidado combina.
  *  - Calcula gratuitos, pagantes e valor NO SERVIDOR (não confia no navegador).
  *  - Grava ou atualiza uma linha na aba "Confirmações".
  *
@@ -89,7 +90,8 @@ function doPost(e) {
       total: entrada.total,
       gratuitos: calc.gratuitos,
       pagantes: calc.pagantes,
-      valor: calc.valor
+      valor: calc.valor,
+      conferir: calc.conferir
     });
   } catch (err) {
     return resposta_({ ok: false, erro: 'Erro ao processar.' });
@@ -107,14 +109,95 @@ function normalizar_(s) {
     .toLowerCase().replace(/\s+/g, ' ').trim();
 }
 
+var PARTICULAS = { de: 1, da: 1, do: 1, das: 1, dos: 1, e: 1 };
+
+/** Nome -> lista de palavras relevantes (sem acentos, sem "de/da/do/dos/das/e"). */
+function palavras_(s) {
+  return normalizar_(s).replace(/[^a-z0-9 ]/g, ' ').split(' ')
+    .filter(function (w) { return w !== '' && !PARTICULAS[w]; });
+}
+
+/** Distância de edição entre duas palavras (para tolerar "Sousa"/"Souza"). */
+function distancia_(a, b) {
+  var prev = [], i, j;
+  for (j = 0; j <= b.length; j++) prev[j] = j;
+  for (i = 1; i <= a.length; i++) {
+    var cur = [i];
+    for (j = 1; j <= b.length; j++) {
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    prev = cur;
+  }
+  return prev[b.length];
+}
+
+/** Palavras iguais; a partir da 2ª palavra tolera 1 letra de diferença (se tiver 5+ letras). */
+function mesmaPalavra_(a, b, ehPrimeira) {
+  if (a === b) return true;
+  if (ehPrimeira || a.length < 5 || b.length < 5) return false;
+  return distancia_(a, b) <= 1;
+}
+
+/** Todas as palavras de "curto" aparecem em "longo", na mesma ordem? A 1ª palavra deve coincidir. */
+function contido_(curto, longo) {
+  if (!curto.length || !longo.length || !mesmaPalavra_(curto[0], longo[0], true)) return false;
+  var j = 1;
+  for (var i = 1; i < curto.length; i++) {
+    while (j < longo.length && !mesmaPalavra_(curto[i], longo[j], false)) j++;
+    if (j >= longo.length) return false;
+    j++;
+  }
+  return true;
+}
+
 /**
- * Gratuito = 1 se o responsável está na lista, senão 0.
- * Pagantes = total - gratuitos. Valor = pagantes * preço.
+ * Compara o nome digitado com a lista de cortesias (já normalizada).
+ *  - 'exato'      : mesmo nome (ignora acento, caixa e espaços).
+ *  - 'aproximado' : nome parcial/ligeiramente diferente que combina com UM só convidado
+ *                   (ex.: "Luiz Henrique" x "Luiz Henrique Lopes Rodrigues").
+ *  - 'ambiguo'    : combina com mais de um convidado -> NÃO concede automaticamente.
+ *  - 'nao'        : não está na lista.
+ * Regras do modo aproximado: mínimo de 2 palavras relevantes no nome digitado; a 1ª
+ * palavra (primeiro nome) deve ser igual; as demais devem aparecer na mesma ordem.
+ */
+function localizar_(nome, lista) {
+  var alvo = normalizar_(nome);
+  if (lista.indexOf(alvo) !== -1) return { tipo: 'exato', convidado: alvo };
+
+  var p = palavras_(nome);
+  if (p.length < 2) return { tipo: 'nao' };
+
+  var achados = [];
+  for (var i = 0; i < lista.length; i++) {
+    var q = palavras_(lista[i]);
+    if (q.length < 2) continue;
+    if (contido_(p, q) || contido_(q, p)) {
+      if (achados.indexOf(lista[i]) === -1) achados.push(lista[i]);
+    }
+  }
+  if (achados.length === 1) return { tipo: 'aproximado', convidado: achados[0] };
+  if (achados.length > 1) return { tipo: 'ambiguo', candidatos: achados };
+  return { tipo: 'nao' };
+}
+
+/**
+ * Gratuito = 1 se o responsável está na lista (inclusive por nome parcial, sem ambiguidade),
+ * senão 0. Pagantes = total - gratuitos. Valor = pagantes * preço.
  */
 function calcular_(nome, total, listaNormalizada, preco) {
-  var gratuitos = listaNormalizada.indexOf(normalizar_(nome)) !== -1 ? 1 : 0;
+  var achado = localizar_(nome, listaNormalizada);
+  var gratuitos = (achado.tipo === 'exato' || achado.tipo === 'aproximado') ? 1 : 0;
   var pagantes = Math.max(total - gratuitos, 0);
-  return { gratuitos: gratuitos, pagantes: pagantes, valor: pagantes * preco };
+  var nota = '';
+  if (achado.tipo === 'aproximado') {
+    nota = 'Cortesia por nome parcial: digitou "' + nome + '", casou com "' + achado.convidado + '"';
+  } else if (achado.tipo === 'ambiguo') {
+    nota = 'CONFERIR CORTESIA: nome "' + nome + '" combina com mais de um convidado (' + achado.candidatos.join('; ') + ')';
+  }
+  return {
+    gratuitos: gratuitos, pagantes: pagantes, valor: pagantes * preco,
+    conferir: achado.tipo === 'ambiguo', nota: nota
+  };
 }
 
 function validarEntrada_(c) {
@@ -172,13 +255,13 @@ function gravar_(aba, entrada, calc) {
   if (linha === -1) {
     var pagamento = calc.valor > 0 ? 'Pendente' : 'Isento';
     var situacao = calc.valor > 0 ? 'Aguardando pagamento' : 'Confirmado';
-    aba.appendRow([agora, nomeSeguro, entrada.total, acomp, calc.gratuitos, calc.pagantes, calc.valor, pagamento, situacao, '']);
+    aba.appendRow([agora, nomeSeguro, entrada.total, acomp, calc.gratuitos, calc.pagantes, calc.valor, pagamento, situacao, calc.nota]);
   } else {
     // Atualiza A:G e preserva Pagamento, Situação e Observações já editados à mão.
     aba.getRange(linha, 1, 1, 7).setValues(dados);
     var obs = aba.getRange(linha, 10);
     var atual = String(obs.getValue() || '');
-    var aviso = 'Reenviou em ' + Utilities.formatDate(agora, 'America/Fortaleza', 'dd/MM HH:mm');
+    var aviso = 'Reenviou em ' + Utilities.formatDate(agora, 'America/Fortaleza', 'dd/MM HH:mm') + (calc.nota ? ' | ' + calc.nota : '');
     obs.setValue(atual ? atual + ' | ' + aviso : aviso);
     // Se o valor mudou depois de pago, sinaliza para conferência.
     if (String(aba.getRange(linha, 8).getValue()) === 'Pago' && calc.valor > 0) {
