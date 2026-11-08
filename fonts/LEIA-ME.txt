@@ -1,0 +1,25 @@
+FONTES DO CONVITE: BUTLER (títulos) e BARCELONA (textos)
+
+Não consegui baixar essas fontes aqui, então o site já está configurado para usá-las,
+mas elas só aparecem quando os arquivos estiverem nesta pasta (/fonts).
+Enquanto isso, o site usa fontes parecidas (Cormorant Garamond e Lora) e funciona normalmente.
+
+COMO ATIVAR
+1. Obtenha os arquivos das fontes em um site oficial e confira a licença de uso em sites (web).
+   Atenção: a Barcelona (ITC Barcelona) costuma ser paga. A Butler tem versão gratuita e versão completa.
+2. Converta para .woff2 (por exemplo, no site "transfonter.org" ou "fontsquirrel.com/tools/webfont-generator")
+   ou use os arquivos .otf/.ttf como estão.
+3. Renomeie os arquivos EXATAMENTE assim e coloque-os nesta pasta:
+
+   Butler-Regular.woff2   (ou .woff / .otf / .ttf)
+   Butler-Bold.woff2      (opcional)
+   Barcelona-Regular.woff2
+   Barcelona-Italic.woff2 (opcional)
+   Barcelona-Bold.woff2   (opcional)
+
+4. Envie a pasta para o GitHub junto com o resto. Não precisa mexer em código.
+
+ONDE CADA FONTE É USADA
+- Butler: nome da formanda, títulos, números da contagem, botões e a citação.
+- Barcelona: textos corridos e informações.
+Para trocar a função de cada uma, edite --serif-title e --serif-text no início de css/style.css.
