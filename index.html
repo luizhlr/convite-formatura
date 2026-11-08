@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Convite de Formatura | Mara Brena Aragão Catunda</title>
-  <meta name="description" content="Você está convidado para a festa de formatura de Mara Brena Aragão Catunda. 16/01/2027, às 22h, no Buffet Dona Flor, em Sobral.">
-  <meta name="theme-color" content="#04140e">
+  <title>Convite de Formatura | Dra. Mara Brena Aragão Catunda</title>
+  <meta name="description" content="Você está convidado para a festa de formatura da Dra. Mara Brena Aragão Catunda. 16/01/2027, às 22h, no Buffet Dona Flor, em Sobral.">
+  <meta name="theme-color" content="#0F2D26">
 
   <!-- Prévia do link (WhatsApp, Instagram etc.). Se o nome do repositório no GitHub NÃO for "convite-formatura",
        troque-o nas duas URLs abaixo. A imagem precisa de endereço absoluto (https://...). -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="Convite de Formatura | Mara Brena Aragão Catunda">
+  <meta property="og:title" content="Convite de Formatura | Dra. Mara Brena Aragão Catunda">
   <meta property="og:url" content="https://luizhlr.github.io/convite-formatura/">
   <meta property="og:description" content="16/01/2027, às 22h, no Buffet Dona Flor. Confirme sua presença pelo site.">
   <meta property="og:image" content="https://luizhlr.github.io/convite-formatura/fotos/og-convite.jpg">
@@ -21,29 +21,30 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <!-- ===== 1. CAPA ===== -->
   <header class="hero" id="topo">
+    <span class="hero__side hero__side--l" aria-hidden="true">Convite de formatura</span>
+    <span class="hero__side hero__side--r" aria-hidden="true">16 · 01 · 2027 · Sobral</span>
+    <p class="eyebrow hero__top">Convite de formatura</p>
     <div class="hero__photo">
       <img src="fotos/01-capa.webp" width="853" height="1280" alt="Mara sorrindo, de beca, capelo e canudo, diante de um trono dourado" fetchpriority="high">
     </div>
     <div class="hero__text">
-      <p class="eyebrow">Convite de formatura</p>
-      <span class="rule" aria-hidden="true"></span>
-      <h1 class="hero__name" data-cfg="formanda.nome">Mara Brena Aragão Catunda</h1>
-      <p class="hero__course" data-cfg="formanda.curso">Medicina</p>
+      <h1 class="hero__name" data-cfg="formanda.nome">Dra. Mara Brena Aragão Catunda</h1>
+      <p class="hero__course"><span aria-hidden="true"></span><b data-cfg="formanda.curso">Medicina</b><span aria-hidden="true"></span></p>
       <p class="hero__phrase" data-cfg="frase">Com grande satisfação, venho convidar você para a minha festa de formatura</p>
+      <button type="button" class="btn btn--gold hero__btn" data-open-rsvp>Confirmar presença</button>
     </div>
-    <a class="scroll-cue" href="#data" aria-label="Rolar para ver os detalhes"><span></span></a>
   </header>
 
   <main>
     <!-- ===== 2. DATA E CONTAGEM ===== -->
-    <section class="section section--center reveal" id="data" aria-labelledby="data-title">
+    <section class="section section--center section--dark reveal" id="data" aria-labelledby="data-title">
       <p class="eyebrow">Salve a data</p>
       <h2 id="data-title" class="date-big">
         <span class="date-big__day" data-cfg="evento.dia">16</span>
@@ -62,63 +63,65 @@
       <p class="countdown__done" id="cd-done" hidden>Obrigada por celebrar esta conquista comigo!</p>
     </section>
 
-    <!-- ===== 3. LOCAL ===== -->
-    <section class="section section--center reveal" aria-labelledby="local-title">
-      <p class="eyebrow">Onde vai ser</p>
-      <h2 id="local-title" class="h2">Local da festa</h2>
-      <div class="card">
-        <svg class="card__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-        <p class="card__title" data-cfg="local.nome">Buffet Dona Flor</p>
-        <p class="card__text" data-cfg="local.endereco" data-hide-empty></p>
-        <a class="btn btn--ghost" id="btn-mapa" href="#" target="_blank" rel="noopener">Abrir no Google Maps</a>
-      </div>
-    </section>
+    <!-- ===== FOLHA CLARA ===== -->
+    <div class="sheet">
 
-    <!-- ===== 4. INFORMAÇÕES ===== -->
-    <section class="section section--center reveal" aria-labelledby="info-title">
-      <p class="eyebrow">Informações</p>
-      <h2 id="info-title" class="h2">Para você se preparar</h2>
-      <div class="info-grid">
-        <div class="card">
-          <svg class="card__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9a2 2 0 0 0 0 6v3h18v-3a2 2 0 0 1 0-6V6H3v3Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M14 6v12" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 2"/></svg>
-          <p class="card__label">Ingresso</p>
-          <p class="card__title"><span data-cfg-money="ingresso.valor">R$ 350,00</span> <small>por pessoa</small></p>
-        </div>
-        <div class="card">
-          <svg class="card__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <p class="card__label">Confirmação</p>
-          <p class="card__title">Obrigatória <small>pelo botão abaixo</small></p>
-        </div>
-      </div>
-    </section>
+      <!-- 3. LOCAL -->
+      <section class="section section--center reveal" aria-labelledby="local-title">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s6.8-5.9 6.8-11.6a6.8 6.8 0 0 0-13.6 0c0 5.7 6.8 11.6 6.8 11.6Z"/><circle cx="12" cy="9.9" r="2.4"/></svg>
+        <p class="eyebrow">Onde vai ser</p>
+        <h2 id="local-title" class="h2" data-cfg="local.nome">Buffet Dona Flor</h2>
+        <p class="local__text" data-cfg="local.endereco" data-hide-empty></p>
+        <a class="btn btn--dark" id="btn-mapa" href="#" target="_blank" rel="noopener">Abrir no Google Maps <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </section>
 
-    <!-- ===== 5. GALERIA ===== -->
-    <section class="section reveal" aria-labelledby="gal-title">
-      <div class="section--center">
-        <p class="eyebrow">Uma trajetória</p>
-        <h2 id="gal-title" class="h2">Momentos desta conquista</h2>
-        <!-- Citação: edite o texto em js/config.js (campos "citacao" e "citacaoAutor") -->
-        <blockquote class="quote">
-          <p data-cfg="citacao">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <cite data-cfg="citacaoAutor" data-hide-empty></cite>
-        </blockquote>
-      </div>
-      <div class="gallery" id="gallery">
-        <figure class="dark"><button type="button" data-full="fotos/03-trono.webp"><img loading="lazy" src="fotos/03-trono.webp" width="853" height="1280" alt="Mara sentada no trono dourado, erguendo o canudo"></button></figure>
-        <figure class="light"><button type="button" data-full="fotos/05-mae-pai-estetoscopio.webp"><img loading="lazy" src="fotos/05-mae-pai-estetoscopio.webp" width="1280" height="853" alt="Mara de jaleco recebendo o estetoscópio da mãe, com o pai ajustando o jaleco"></button></figure>
-        <figure class="light"><button type="button" data-full="fotos/04-jaleco.webp"><img loading="lazy" src="fotos/04-jaleco.webp" width="853" height="1280" alt="Retrato de Mara de jaleco branco e estetoscópio"></button></figure>
-        <figure class="light"><button type="button" data-full="fotos/06-mae-beijo.webp"><img loading="lazy" src="fotos/06-mae-beijo.webp" width="1280" height="853" alt="A mãe beijando a testa de Mara"></button></figure>
-        <figure class="dark"><button type="button" data-full="fotos/08-avo.webp"><img loading="lazy" src="fotos/08-avo.webp" width="853" height="1280" alt="Mara de beca abraçada à avó, que segura um terço"></button></figure>
-        <figure class="dark"><button type="button" data-full="fotos/09-avo-chapeu.webp"><img loading="lazy" src="fotos/09-avo-chapeu.webp" width="1280" height="853" alt="Mara de chapéu de vaqueiro ao lado do avô, ambos sorrindo"></button></figure>
-        <figure class="light"><button type="button" data-full="fotos/07-pai.webp"><img loading="lazy" src="fotos/07-pai.webp" width="1280" height="853" alt="Mara de jaleco olhando para o pai, que sorri"></button></figure>
-        <figure class="dark"><button type="button" data-full="fotos/02-retrato-verde.webp"><img loading="lazy" src="fotos/02-retrato-verde.webp" width="853" height="1280" alt="Retrato de Mara de beca, sorrindo, com o canudo nas mãos"></button></figure>
-      </div>
-    </section>
+      <!-- 4. INFORMAÇÕES -->
+      <section class="section section--tight reveal" aria-labelledby="info-title">
+        <h2 id="info-title" class="sr-only">Informações</h2>
+        <div class="info-grid">
+          <div class="info">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.2a2.2 2.2 0 0 0 0 4.4v3.6h18v-3.6a2.2 2.2 0 0 1 0-4.4V5.6H3v3.6Z"/><path d="M14.5 5.6v11.6" stroke-dasharray="2 2.2"/></svg>
+            <p class="eyebrow eyebrow--sm">Ingresso</p>
+            <p class="info__big"><span data-cfg-money="ingresso.valor">R$ 350,00</span></p>
+            <p class="info__sub">por pessoa</p>
+          </div>
+          <div class="info">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m7.8 12.4 3 3 5.6-6.2"/></svg>
+            <p class="eyebrow eyebrow--sm">Confirmação</p>
+            <p class="info__big info__big--it">Obrigatória</p>
+            <p class="info__sub">pelo botão abaixo</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. GALERIA -->
+      <section class="section reveal" aria-labelledby="gal-title">
+        <div class="section--center">
+          <p class="eyebrow">Uma trajetória</p>
+          <h2 id="gal-title" class="h2">Momentos <em>desta</em> conquista</h2>
+          <!-- Citação: edite o texto em js/config.js (campos "citacao" e "citacaoAutor") -->
+          <blockquote class="quote">
+            <p data-cfg="citacao">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <cite data-cfg="citacaoAutor" data-hide-empty></cite>
+          </blockquote>
+        </div>
+        <div class="gallery" id="gallery">
+          <figure class="dark"><button type="button" data-full="fotos/03-trono.webp"><img loading="lazy" src="fotos/03-trono.webp" width="853" height="1280" alt="Mara sentada no trono dourado, erguendo o canudo"></button></figure>
+          <figure class="light"><button type="button" data-full="fotos/05-mae-pai-estetoscopio.webp"><img loading="lazy" src="fotos/05-mae-pai-estetoscopio.webp" width="1280" height="853" alt="Mara de jaleco recebendo o estetoscópio da mãe, com o pai ajustando o jaleco"></button></figure>
+          <figure class="light"><button type="button" data-full="fotos/04-jaleco.webp"><img loading="lazy" src="fotos/04-jaleco.webp" width="853" height="1280" alt="Retrato de Mara de jaleco branco e estetoscópio"></button></figure>
+          <figure class="light"><button type="button" data-full="fotos/06-mae-beijo.webp"><img loading="lazy" src="fotos/06-mae-beijo.webp" width="1280" height="853" alt="A mãe beijando a testa de Mara"></button></figure>
+          <figure class="dark"><button type="button" data-full="fotos/08-avo.webp"><img loading="lazy" src="fotos/08-avo.webp" width="853" height="1280" alt="Mara de beca abraçada à avó, que segura um terço"></button></figure>
+          <figure class="dark"><button type="button" data-full="fotos/09-avo-chapeu.webp"><img loading="lazy" src="fotos/09-avo-chapeu.webp" width="1280" height="853" alt="Mara de chapéu de vaqueiro ao lado do avô, ambos sorrindo"></button></figure>
+          <figure class="light"><button type="button" data-full="fotos/07-pai.webp"><img loading="lazy" src="fotos/07-pai.webp" width="1280" height="853" alt="Mara de jaleco olhando para o pai, que sorri"></button></figure>
+          <figure class="dark"><button type="button" data-full="fotos/02-retrato-verde.webp"><img loading="lazy" src="fotos/02-retrato-verde.webp" width="853" height="1280" alt="Retrato de Mara de beca, sorrindo, com o canudo nas mãos"></button></figure>
+        </div>
+      </section>
+    </div>
 
     <!-- ===== 6. CONFIRMAÇÃO ===== -->
     <section class="section section--center cta reveal" id="confirmar" aria-labelledby="cta-title">
       <p class="eyebrow">Sua presença é muito importante</p>
-      <h2 id="cta-title" class="h2">Vai ser uma noite inesquecível</h2>
+      <h2 id="cta-title" class="h2">Vai ser uma noite <em>inesquecível</em></h2>
       <p class="lead">Confirme sua presença e a de seus acompanhantes. Leva menos de um minuto.</p>
       <button type="button" class="btn btn--gold" data-open-rsvp>Confirmar presença</button>
     </section>
@@ -126,7 +129,7 @@
 
   <footer class="footer">
     <span class="rule" aria-hidden="true"></span>
-    <p><span data-cfg="formanda.nome">Mara Brena Aragão Catunda</span> · <span data-cfg="formanda.curso">Medicina</span></p>
+    <p data-cfg="formanda.nome">Dra. Mara Brena Aragão Catunda</p>
     <p class="footer__small">16/01/2027 · <span data-cfg="local.nome">Buffet Dona Flor</span></p>
   </footer>
 
