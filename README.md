@@ -1,4 +1,4 @@
-# Convite de formatura: Dra. Mara Brena Aragão Catunda
+# Convite de formatura: Mara Brena Aragão Catunda
 
 Site estático (HTML, CSS e JavaScript puro) para o **GitHub Pages**, com confirmação de presença que grava numa **planilha do Google** e abre uma mensagem pronta no **WhatsApp**.
 
@@ -7,7 +7,7 @@ URL final prevista: `https://luizhlr.github.io/convite-formatura/`
 
 ## O que já está preenchido
 
-Data, horário, buffet e endereço, mapa, valor do ingresso (R$ 350), PIX (CPF, titular MARA BRENA ARAGÃO CATUNDA), WhatsApp da organização, nome da formanda, fotos otimizadas e imagem de prévia do link. As fontes (Cormorant Garamond e Jost) vêm do Google Fonts, sem arquivos para instalar. O site está sem música.
+Data, horário, buffet e endereço, mapa, valor do ingresso (R$ 350), PIX (CPF, titular MARA BRENA ARAGÃO CATUNDA), WhatsApp da organização, nome da formanda, fotos otimizadas e imagem de prévia do link. O site está sem música.
 
 Regras da confirmação: o convidado da lista tem ingresso gratuito; acompanhantes pagam R$ 350 cada; no máximo 5 acompanhantes por confirmação (6 pessoas no total).
 
@@ -15,6 +15,7 @@ Regras da confirmação: o convidado da lista tem ingresso gratuito; acompanhant
 
 | Item | Onde | Observação |
 |---|---|---|
+| Arquivos das fontes Butler e Barcelona | pasta `fonts/` | Leia `fonts/LEIA-ME.txt`. Sem os arquivos, o site usa fontes parecidas e funciona normalmente. |
 | URL do Apps Script | `js/config.js`, campo `appsScriptUrl` | Só existe depois do Passo 2 abaixo. Sem ela, a confirmação não grava na planilha, mas o PIX e o WhatsApp continuam funcionando. |
 | Lista de convidados gratuitos | aba "Convidados" da planilha | Nomes completos, um por linha, a partir da linha 2. |
 | Texto da citação | `js/config.js`, campos `citacao` e `citacaoAutor` | Está com lorem ipsum. |
@@ -66,9 +67,10 @@ Sempre que mudar o `Codigo.gs`, é preciso **Implantar → Gerenciar implantaç�
 
 ```
 index.html            página
-css/style.css         visual (cores e fontes no começo do arquivo)
+css/style.css         visual (fontes, cores, layout)
 js/config.js          dados editáveis
 js/main.js            contagem, galeria, confirmação
+fonts/                coloque aqui Butler e Barcelona (veja LEIA-ME.txt)
 fotos/                fotos (WebP) + og-convite.jpg (prévia do link)
 audio/                música opcional (vazio)
 apps-script/Codigo.gs código da planilha (colar no Apps Script)

@@ -265,7 +265,7 @@
 
   function msgWhatsApp(payload, r) {
     var L = [];
-    L.push("Olá! Confirmo presença na formatura da " + C.formanda.nome + " (" + C.evento.dataTexto + ", " + C.evento.horaTexto + " - " + C.local.nome + ").");
+    L.push("Olá! Confirmo presença na formatura de " + C.formanda.nome + " (" + C.evento.dataTexto + ", " + C.evento.horaTexto + " - " + C.local.nome + ").");
     L.push("");
     L.push("Responsável: " + payload.nome);
     L.push("Total de pessoas: " + payload.total);

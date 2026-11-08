@@ -5,7 +5,7 @@
    ===================================================================== */
 window.CONFIG = {
   formanda: {
-    nome: "Dra. Mara Brena Aragão Catunda",
+    nome: "Mara Brena Aragão Catunda",
     curso: "Medicina",
     instituicao: "Universidade Federal do Ceará"
   },
@@ -47,7 +47,7 @@ window.CONFIG = {
   whatsapp: "5588999130080",
 
   // URL do web app do Google Apps Script (termina em /exec). Preencher após o deploy (veja o README).
-  appsScriptUrl: "https://script.google.com/macros/s/AKfycbwffTRswDSXV_9wSLJJ12pwPmRh6qzMOTTL_-skJC4zprPhPh4ogPRLAZfNeo_7K9ySAw/exec",
+  appsScriptUrl: "",
 
   // Máximo de pessoas por confirmação, INCLUINDO o responsável (6 = você + até 5 acompanhantes)
   maxPessoas: 6,
