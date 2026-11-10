@@ -392,13 +392,14 @@ a { color: var(--teal); }
 /* ---------- Citação ---------- */
 .quote {
   position: relative;
-  max-width: 36rem;
+  max-width: 38rem;
   margin: 0 auto 2.6rem;
-  padding: 2.6rem 1rem 0;
+  padding: 2.6rem .4rem 0;
   font-family: var(--font-title);
   font-style: italic;
-  font-size: clamp(1.35rem, 4.6vw, 1.7rem);
-  line-height: 1.45;
+  font-size: clamp(1.22rem, 4.3vw, 1.4rem);
+  line-height: 1.5;
+  text-align: left;
   color: var(--ink);
 }
 .quote::before {
@@ -411,7 +412,8 @@ a { color: var(--teal); }
   line-height: 1;
   color: var(--gold);
 }
-.quote p { margin: 0; }
+.quote p { margin: 0 0 1.1em; }
+.quote p:last-child { margin-bottom: 0; }
 .quote cite {
   display: block;
   margin-top: .9rem;

@@ -27,6 +27,15 @@
     if (v) n.textContent = v;
     else if (n.hasAttribute("data-hide-empty")) n.hidden = true;
   });
+  // Texto em parágrafos: aceita uma lista ["parágrafo 1", "parágrafo 2"] ou um texto com linha em branco entre parágrafos.
+  $$("[data-cfg-paragrafos]").forEach(function (n) {
+    var v = get(n.getAttribute("data-cfg-paragrafos"));
+    var lista = Array.isArray(v) ? v : (typeof v === "string" ? v.split(/\n\s*\n/) : []);
+    lista = lista.map(function (t) { return String(t).trim(); }).filter(Boolean);
+    if (!lista.length) return;
+    n.textContent = "";
+    lista.forEach(function (t) { n.appendChild(el("p", null, t)); });
+  });
   $$("[data-cfg-money]").forEach(function (n) {
     var v = get(n.getAttribute("data-cfg-money"));
     if (typeof v === "number") n.textContent = brl.format(v);
