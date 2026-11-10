@@ -30,7 +30,13 @@ window.CONFIG = {
 
   // Citação exibida abaixo do título "Uma trajetória". Edite o texto à vontade.
   // Deixe "citacaoAutor" vazio ("") para não mostrar autor.
-  citacao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+  citacao: "A Deus, minha eterna gratidão. Por ter guiado meus passos, sustentado minha fé e me dado forças para continuar mesmo diante dos dias mais difíceis. Hoje, reconheço que cada detalhe dessa caminhada esteve sob Seus cuidados."
+"Aos meus pais, minha família e meu namorado, meu amor e agradecimento mais profundo. Essa conquista também pertence a vocês. Obrigada por acreditarem em mim, por cada incentivo, cada renúncia, cada oração e por nunca medirem esforços para que esse sonho se tornasse realidade. Se hoje chego até aqui, é porque tive vocês como alicerce em todos os momentos."
+"As minhas amigas obrigada por dividirem comigo os desafios, as inseguranças e tantas alegrias ao longos desses anos. Vocês estiveram comigo acompanhando tudo antes mesmo da faculdade começar, tornaram os dias difíceis mais leves antes e depois e fizeram dessa trajetória uma história ainda mais especial."
+"A todos os professores e mestres que contribuíram para minha formação, obrigada por cada ensinamento, pela dedicação e por me mostrarem que a Medicina vai muito além do conhecimento técnico: é, acima de tudo, cuidado, humanidade e compromisso com o próximo."
+"Hoje, encerro um ciclo que transformou não apenas minha história, mas também quem sou. Levo comigo muito mais do que um diploma: levo aprendizados, pessoas, pacientes, memórias e a certeza de que cada passo valeu a pena."
+"A tão sonhada conquista chegou. E, embora apenas meu nome esteja neste diploma, essa vitória é de todos que caminharam comigo até aqui."
+"Com o coração cheio de gratidão, inicio uma nova jornada: a de cuidar de vidas.",
   citacaoAutor: "",
 
   ingresso: {
