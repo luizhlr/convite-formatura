@@ -426,6 +426,14 @@ a { color: var(--teal); }
   color: var(--gold-dark);
 }
 
+/* Agradecimentos e galeria: o texto longo fecha em linha fina e a galeria começa logo depois */
+.section--thanks { padding-bottom: clamp(2rem, 6vw, 3rem); }
+.section--thanks .h2 { margin-bottom: .6rem; }
+.section--thanks .quote { margin-bottom: 0; }
+.section--gallery { padding-top: clamp(2rem, 6vw, 3rem); }
+.section--gallery .h2 { margin-bottom: 2rem; }
+.section--thanks::after { content: ""; display: block; width: 44px; height: 1px; margin: clamp(2.4rem, 7vw, 3.4rem) auto 0; background: var(--gold); }
+
 /* ---------- Galeria ---------- */
 .gallery { columns: 2; column-gap: .65rem; max-width: var(--maxw); margin: 0 auto; }
 @media (min-width: 760px) { .gallery { columns: 3; column-gap: 1rem; } }
